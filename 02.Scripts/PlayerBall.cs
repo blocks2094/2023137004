@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerBall : MonoBehaviour
 {
     public float jumpPower;
     public int itemCount;
+    public GameManagerLogic manager;
     AudioSource audio;
     bool isJump;
     Rigidbody rigid;
@@ -50,5 +52,18 @@ public class PlayerBall : MonoBehaviour
             audio.Play();
             other.gameObject.SetActive(false);
         }
+        else if (other.tag == "Finish")
+        {
+            if(itemCount == manager.TotalItemCount)
+            {
+                SceneManager.LoadScene("Example1_1");
+            }
+            else
+            {
+                SceneManager.LoadScene("Example1_0");
+            }
+        }
+
     }
+    
 }
