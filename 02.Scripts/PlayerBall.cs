@@ -52,15 +52,15 @@ public class PlayerBall : MonoBehaviour
             audio.Play();
             other.gameObject.SetActive(false);
         }
-        else if (other.tag == "Finish")
+        else if (other.tag == "Point")
         {
             if(itemCount == manager.TotalItemCount)
             {
-                SceneManager.LoadScene("Example1_1");
+                SceneManager.LoadScene("Example1_"+(manager.stage+1).ToString());
             }
             else
             {
-                SceneManager.LoadScene("Example1_0");
+                SceneManager.LoadScene("Example1_" + manager.stage.ToString());
             }
         }
 
