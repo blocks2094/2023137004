@@ -36,7 +36,7 @@ public class PlayerBall : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.name == "floor")
+        if(collision.gameObject.tag == "floor")
         {
             isJump = false;
         }
@@ -44,7 +44,7 @@ public class PlayerBall : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.name == "Item")
+        if(other.tag == "Item")
         {
             itemCount++;
             audio.Play();
