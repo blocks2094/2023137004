@@ -56,6 +56,9 @@ public class PlayerBall : MonoBehaviour
         {
             if(itemCount == manager.TotalItemCount)
             {
+                if (manager.stage == 2)
+                    SceneManager.LoadScene(0);
+                else
                 SceneManager.LoadScene("Example1_"+(manager.stage+1).ToString());
             }
             else
