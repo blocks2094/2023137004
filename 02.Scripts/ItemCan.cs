@@ -7,6 +7,16 @@ public class ItemCan : MonoBehaviour
     public float rotateSpeed;
     void Update()
     {
-        transform.Rotate(Vector3.up * rotateSpeed * Time.deltaTime);
+        transform.Rotate(Vector3.up * rotateSpeed * Time.deltaTime, Space.World);
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.name == "Player")
+        {
+            PlayerBall player = other.GetComponent<PlayerBall>();
+            player.itemCount++;
+            gameObject.SetActive(false);
+        }
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerBall : MonoBehaviour
 {
     public float jumpPower;
+    public int itemCount;
     bool isJump;
     Rigidbody rigid;
 
