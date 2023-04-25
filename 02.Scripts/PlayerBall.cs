@@ -6,13 +6,15 @@ public class PlayerBall : MonoBehaviour
 {
     public float jumpPower;
     public int itemCount;
+    AudioSource audio;
     bool isJump;
     Rigidbody rigid;
 
     private void Awake()
     {
         isJump = false;
-        rigid = GetComponent<Rigidbody>();
+        rigid = GetComponent<Rigidbody>();           
+        audio = GetComponent<AudioSource>();     
     }
 
     private void Update()
@@ -37,6 +39,16 @@ public class PlayerBall : MonoBehaviour
         if(collision.gameObject.name == "floor")
         {
             isJump = false;
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.name == "Item")
+        {
+            itemCount++;
+            audio.Play();
+            other.gameObject.SetActive(false);
         }
     }
 }
